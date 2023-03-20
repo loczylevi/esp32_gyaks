@@ -1,0 +1,609 @@
+sis@u17:~$ esp
+espefuse.py   esphome/      espsecure.py  esptool.py    
+sis@u17:~$ esp
+espefuse.py   esphome/      espsecure.py  esptool.py    
+sis@u17:~$ esptool.py
+űesptool.py v4.4
+usage: esptool [-h]
+               [--chip {auto,esp8266,esp32,esp32s2,esp32s3beta2,esp32s3,esp32c3,esp32c6beta,esp32h2beta1,esp32h2beta2,esp32c2,esp32c6}]
+               [--port PORT] [--baud BAUD]
+               [--before {default_reset,usb_reset,no_reset,no_reset_no_sync}]
+               [--after {hard_reset,soft_reset,no_reset,no_reset_stub}]
+               [--no-stub] [--trace] [--override-vddsdio [{1.8V,1.9V,OFF}]]
+               [--connect-attempts CONNECT_ATTEMPTS]
+               {load_ram,dump_mem,read_mem,write_mem,write_flash,run,image_info,make_image,elf2image,read_mac,chip_id,flash_id,read_flash_status,write_flash_status,read_flash,verify_flash,erase_flash,erase_region,merge_bin,get_security_info,version}
+               ...
+
+esptool.py v4.4 - Espressif chips ROM Bootloader Utility
+
+positional arguments:
+  {load_ram,dump_mem,read_mem,write_mem,write_flash,run,image_info,make_image,elf2image,read_mac,chip_id,flash_id,read_flash_status,write_flash_status,read_flash,verify_flash,erase_flash,erase_region,merge_bin,get_security_info,version}
+                        Run esptool.py {command} -h for additional help
+    load_ram            Download an image to RAM and execute
+    dump_mem            Dump arbitrary memory to disk
+    read_mem            Read arbitrary memory location
+    write_mem           Read-modify-write to arbitrary memory location
+    write_flash         Write a binary blob to flash
+    run                 Run application code in flash
+    image_info          Dump headers from an application image
+    make_image          Create an application image from binary files
+    elf2image           Create an application image from ELF file
+    read_mac            Read MAC address from OTP ROM
+    chip_id             Read Chip ID from OTP ROM
+    flash_id            Read SPI flash manufacturer and device ID
+    read_flash_status   Read SPI flash status register
+    write_flash_status  Write SPI flash status register
+    read_flash          Read SPI flash content
+    verify_flash        Verify a binary blob against flash
+    erase_flash         Perform Chip Erase on SPI flash
+    erase_region        Erase a region of the flash
+    merge_bin           Merge multiple raw binary files into a single file for
+                        later flashing
+    get_security_info   Get some security-related data
+    version             Print esptool version
+
+options:
+  -h, --help            show this help message and exit
+  --chip {auto,esp8266,esp32,esp32s2,esp32s3beta2,esp32s3,esp32c3,esp32c6beta,esp32h2beta1,esp32h2beta2,esp32c2,esp32c6}, -c {auto,esp8266,esp32,esp32s2,esp32s3beta2,esp32s3,esp32c3,esp32c6beta,esp32h2beta1,esp32h2beta2,esp32c2,esp32c6}
+                        Target chip type
+  --port PORT, -p PORT  Serial port device
+  --baud BAUD, -b BAUD  Serial port baud rate used when flashing/reading
+  --before {default_reset,usb_reset,no_reset,no_reset_no_sync}
+                        What to do before connecting to the chip
+  --after {hard_reset,soft_reset,no_reset,no_reset_stub}, -a {hard_reset,soft_reset,no_reset,no_reset_stub}
+                        What to do after esptool.py is finished
+  --no-stub             Disable launching the flasher stub, only talk to ROM
+                        bootloader. Some features will not be available.
+  --trace, -t           Enable trace-level output of esptool.py interactions.
+  --override-vddsdio [{1.8V,1.9V,OFF}]
+                        Override ESP32 VDDSDIO internal voltage regulator (use
+                        with care)
+  --connect-attempts CONNECT_ATTEMPTS
+                        Number of attempts to connect, negative or 0 for
+                        infinite. Default: 7.
+sis@u17:~$ cd Letöltések/
+sis@u17:~/Letöltések$ ls
+'2_10m berkes bálintenergia .pdf'
+ CiscoPacketTracer_820_Ubuntu_64bit.deb
+'Copy of circuito de energia de luz solar.pdf'
+ DHT-20221129T135122Z-001.zip
+ firmware.micropython-1.12-14-g9bf5d9b80.bin
+ google-chrome-stable_current_amd64.deb
+'OsztalyOrarendOsszes_11.I_2022_2023__2022. 09. 12.-2022. 09. 18..pdf'
+ teljes_program_TESZT-20221129T135101Z-001.zip
+'TobbPedagogusOrarendOsszes_2022_2023_2022. 09. 12..pdf'
+ veyon_4.7.4.0-ubuntu.jammy_amd64.deb
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyACM0 erase_flash
+esptool.py v4.4
+Serial port /dev/ttyACM0
+
+A fatal error occurred: Could not open /dev/ttyACM0, the port doesn't exist
+sis@u17:~/Letöltések$ l
+Display all 122 possibilities? (y or n)^C
+sis@u17:~/Letöltések$ ls
+ls           lsb_release  lsinitramfs  lslogins     lsns         lspcmcia
+lsattr       lscpu        lsipc        lsmem        lsof         lspgpot
+lsblk        lshw         lslocks      lsmod        lspci        lsusb
+sis@u17:~/Letöltések$ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 002: ID 03f0:304a HP, Inc Slim Keyboard
+Bus 001 Device 004: ID 10c4:ea60 Silicon Labs CP210x UART Bridge
+Bus 001 Device 003: ID 03f0:134a HP, Inc Optical Mouse
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+sis@u17:~/Letöltések$ lsusb
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 002: ID 03f0:304a HP, Inc Slim Keyboard
+Bus 001 Device 003: ID 03f0:134a HP, Inc Optical Mouse
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+sis@u17:~/Letöltések$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,sis
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:sis
+fax:x:21:
+voice:x:22:
+cdrom:x:24:sis
+floppy:x:25:
+tape:x:26:
+sudo:x:27:sis
+audio:x:29:pulse
+dip:x:30:sis
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:sis
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+crontab:x:104:
+messagebus:x:105:
+systemd-timesync:x:106:
+input:x:107:
+sgx:x:108:
+kvm:x:109:
+render:x:110:
+syslog:x:111:
+tss:x:112:
+bluetooth:x:113:
+ssl-cert:x:114:
+uuidd:x:115:
+systemd-oom:x:116:
+tcpdump:x:117:
+_ssh:x:118:
+avahi-autoipd:x:119:
+netdev:x:120:
+avahi:x:121:
+lpadmin:x:122:sis
+rtkit:x:123:
+whoopsie:x:124:
+sssd:x:125:
+nm-openvpn:x:126:
+scanner:x:127:saned
+saned:x:128:
+colord:x:129:
+geoclue:x:130:
+pulse:x:131:
+pulse-access:x:132:
+gdm:x:133:
+lxd:x:134:sis
+sis:x:1000:
+sambashare:x:135:sis
+meres:x:1002:
+docker:x:999:sis,dzsenii,loczylevi
+dzsenii:x:1001:
+maarkovicsgyorgy:x:1003:
+jakabroland:x:1004:
+szekelyszabolcs2:x:1005:
+szabobalint:x:1006:
+loczylevi:x:1007:
+fwupd-refresh:x:136:
+sis@u17:~/Letöltések$ sudo adduser sis dialout
+[sudo] sis jelszava: 
+`sis' felhasználó már tagja a e csoportnak: dialout.
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyACM0 erase_flash
+esptool.py v4.4
+Serial port /dev/ttyACM0
+
+A fatal error occurred: Could not open /dev/ttyACM0, the port doesn't exist
+sis@u17:~/Letöltések$ lsusb -h
+Usage: lsusb [options]...
+List USB devices
+  -v, --verbose
+      Increase verbosity (show descriptors)
+  -s [[bus]:][devnum]
+      Show only devices with specified device and/or
+      bus numbers (in decimal)
+  -d vendor:[product]
+      Show only devices with the specified vendor and
+      product ID numbers (in hexadecimal)
+  -D device
+      Selects which device lsusb will examine
+  -t, --tree
+      Dump the physical USB device hierarchy as a tree
+  -V, --version
+      Show version of program
+  -h, --help
+      Show usage and help
+sis@u17:~/Letöltések$ lsusb -v
+
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Couldn't open device, some information will be missing
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               3.10
+  bDeviceClass            9 Hub
+  bDeviceSubClass         0 
+  bDeviceProtocol         3 
+  bMaxPacketSize0         9
+  idVendor           0x1d6b Linux Foundation
+  idProduct          0x0003 3.0 root hub
+  bcdDevice            5.19
+  iManufacturer           3 Linux 5.19.0-35-generic xhci-hcd
+  iProduct                2 xHCI Host Controller
+  iSerial                 1 0000:00:14.0
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x001f
+    bNumInterfaces          1
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0xe0
+      Self Powered
+      Remote Wakeup
+    MaxPower                0mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         9 Hub
+      bInterfaceSubClass      0 
+      bInterfaceProtocol      0 Full speed (or root) hub
+      iInterface              0 
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0004  1x 4 bytes
+        bInterval              12
+        bMaxBurst               0
+
+Bus 001 Device 002: ID 03f0:304a HP, Inc Slim Keyboard
+Couldn't open device, some information will be missing
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+  bDeviceClass            0 
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0         8
+  idVendor           0x03f0 HP, Inc
+  idProduct          0x304a Slim Keyboard
+  bcdDevice            0.11
+  iManufacturer           1 Chicony
+  iProduct                2 HP Business Slim Keyboard
+  iSerial                 0 
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x003b
+    bNumInterfaces          2
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0xa0
+      (Bus Powered)
+      Remote Wakeup
+    MaxPower              100mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         3 Human Interface Device
+      bInterfaceSubClass      1 Boot Interface Subclass
+      bInterfaceProtocol      1 Keyboard
+      iInterface              0 
+        HID Device Descriptor:
+          bLength                 9
+          bDescriptorType        33
+          bcdHID               1.10
+          bCountryCode            0 Not supported
+          bNumDescriptors         1
+          bDescriptorType        34 Report
+          wDescriptorLength      65
+         Report Descriptors: 
+           ** UNAVAILABLE **
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0008  1x 8 bytes
+        bInterval              10
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        1
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         3 Human Interface Device
+      bInterfaceSubClass      0 
+      bInterfaceProtocol      0 
+      iInterface              0 
+        HID Device Descriptor:
+          bLength                 9
+          bDescriptorType        33
+          bcdHID               1.10
+          bCountryCode            0 Not supported
+          bNumDescriptors         1
+          bDescriptorType        34 Report
+          wDescriptorLength     103
+         Report Descriptors: 
+           ** UNAVAILABLE **
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x82  EP 2 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0008  1x 8 bytes
+        bInterval              10
+
+Bus 001 Device 005: ID 10c4:ea60 Silicon Labs CP210x UART Bridge
+Couldn't open device, some information will be missing
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               1.10
+  bDeviceClass            0 
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0        64
+  idVendor           0x10c4 Silicon Labs
+  idProduct          0xea60 CP210x UART Bridge
+  bcdDevice            1.00
+  iManufacturer           1 Silicon Labs
+  iProduct                2 CP2102 USB to UART Bridge Controller
+  iSerial                 3 0001
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x0020
+    bNumInterfaces          1
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0x80
+      (Bus Powered)
+    MaxPower              100mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           2
+      bInterfaceClass       255 Vendor Specific Class
+      bInterfaceSubClass      0 
+      bInterfaceProtocol      0 
+      iInterface              2 
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0040  1x 64 bytes
+        bInterval               0
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x01  EP 1 OUT
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0040  1x 64 bytes
+        bInterval               0
+
+Bus 001 Device 003: ID 03f0:134a HP, Inc Optical Mouse
+Couldn't open device, some information will be missing
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+  bDeviceClass            0 
+  bDeviceSubClass         0 
+  bDeviceProtocol         0 
+  bMaxPacketSize0         8
+  idVendor           0x03f0 HP, Inc
+  idProduct          0x134a Optical Mouse
+  bcdDevice            1.00
+  iManufacturer           1 PixArt
+  iProduct                2 HP USB Optical Mouse
+  iSerial                 0 
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x0022
+    bNumInterfaces          1
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0xa0
+      (Bus Powered)
+      Remote Wakeup
+    MaxPower              100mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         3 Human Interface Device
+      bInterfaceSubClass      1 Boot Interface Subclass
+      bInterfaceProtocol      2 Mouse
+      iInterface              0 
+        HID Device Descriptor:
+          bLength                 9
+          bDescriptorType        33
+          bcdHID               1.11
+          bCountryCode            0 Not supported
+          bNumDescriptors         1
+          bDescriptorType        34 Report
+          wDescriptorLength      46
+         Report Descriptors: 
+           ** UNAVAILABLE **
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0004  1x 4 bytes
+        bInterval              10
+
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Couldn't open device, some information will be missing
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+  bDeviceClass            9 Hub
+  bDeviceSubClass         0 
+  bDeviceProtocol         1 Single TT
+  bMaxPacketSize0        64
+  idVendor           0x1d6b Linux Foundation
+  idProduct          0x0002 2.0 root hub
+  bcdDevice            5.19
+  iManufacturer           3 Linux 5.19.0-35-generic xhci-hcd
+  iProduct                2 xHCI Host Controller
+  iSerial                 1 0000:00:14.0
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x0019
+    bNumInterfaces          1
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0xe0
+      Self Powered
+      Remote Wakeup
+    MaxPower                0mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           1
+      bInterfaceClass         9 Hub
+      bInterfaceSubClass      0 
+      bInterfaceProtocol      0 Full speed (or root) hub
+      iInterface              0 
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x81  EP 1 IN
+        bmAttributes            3
+          Transfer Type            Interrupt
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0004  1x 4 bytes
+        bInterval              12
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyACM0 erase_flash
+esptool.py v4.4
+Serial port /dev/ttyACM0
+
+A fatal error occurred: Could not open /dev/ttyACM0, the port doesn't exist
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+esptool.py v4.4
+Serial port /dev/ttyUSB0
+Connecting......................................
+
+A fatal error occurred: Failed to connect to ESP32: Wrong boot mode detected (0x13)! The chip needs to be in download mode.
+For troubleshooting steps visit: https://docs.espressif.com/projects/esptool/en/latest/troubleshooting.html
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+esptool.py v4.4
+Serial port /dev/ttyUSB0
+Connecting.....
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+WARNING: Detected crystal freq 41.01MHz is quite different to normalized freq 40MHz. Unsupported crystal in use?
+Crystal is 40MHz
+MAC: 3c:71:bf:f4:67:78
+Uploading stub...
+Running stub...
+Stub running...
+Erasing flash (this may take a while)...
+Chip erase completed successfully in 8.8s
+Hard resetting via RTS pin...
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x1000 -z firmware.micropython-1.12-14-g9bf5d9b80.bin 
+usage: esptool write_flash [-h] [--erase-all] [--flash_freq {keep,80m,60m,48m,40m,30m,26m,24m,20m,16m,15m,12m}] [--flash_mode {keep,qio,qout,dio,dout}]
+                           [--flash_size {detect,keep,256KB,512KB,1MB,2MB,2MB-c1,4MB,4MB-c1,8MB,16MB,32MB,64MB,128MB}] [--spi-connection SPI_CONNECTION] [--no-progress] [--verify] [--encrypt]
+                           [--encrypt-files <address> <filename> [<address> <filename> ...]] [--ignore-flash-encryption-efuse-setting] [--force] [--compress | --no-compress]
+                           <address> <filename> [<address> <filename> ...]
+esptool write_flash: error: argument <address> <filename>: Must be pairs of an address and the binary filename to write there
+sis@u17:~/Letöltések$ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x1000 firmware.micropython-1.12-14-g9bf5d9b80.bin 
+esptool.py v4.4
+Serial port /dev/ttyUSB0
+Connecting.....
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+WARNING: Detected crystal freq 41.01MHz is quite different to normalized freq 40MHz. Unsupported crystal in use?
+Crystal is 40MHz
+MAC: 3c:71:bf:f4:67:78
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00158fff...
+Compressed 1407136 bytes to 893450...
+Wrote 1407136 bytes (893450 compressed) at 0x00001000 in 79.1 seconds (effective 142.4 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+sis@u17:~/Letöltések$ esphome 
+2_10m berkes bálintenergia .pdf                                       google-chrome-stable_current_amd64.deb
+CiscoPacketTracer_820_Ubuntu_64bit.deb                                OsztalyOrarendOsszes_11.I_2022_2023__2022. 09. 12.-2022. 09. 18..pdf
+Copy of circuito de energia de luz solar.pdf                          teljes_program_TESZT-20221129T135101Z-001.zip
+DHT-20221129T135122Z-001.zip                                          TobbPedagogusOrarendOsszes_2022_2023_2022. 09. 12..pdf
+firmware.micropython-1.12-14-g9bf5d9b80.bin                           veyon_4.7.4.0-ubuntu.jammy_amd64.deb
+sis@u17:~/Letöltések$ esphome 
+2_10m berkes bálintenergia .pdf                                       google-chrome-stable_current_amd64.deb
+CiscoPacketTracer_820_Ubuntu_64bit.deb                                OsztalyOrarendOsszes_11.I_2022_2023__2022. 09. 12.-2022. 09. 18..pdf
+Copy of circuito de energia de luz solar.pdf                          teljes_program_TESZT-20221129T135101Z-001.zip
+DHT-20221129T135122Z-001.zip                                          TobbPedagogusOrarendOsszes_2022_2023_2022. 09. 12..pdf
+firmware.micropython-1.12-14-g9bf5d9b80.bin                           veyon_4.7.4.0-ubuntu.jammy_amd64.deb
+sis@u17:~/Letöltések$ esphome -h
+usage: esphome [-h] [-v] [-q] [-s key value] command ...
+
+positional arguments:
+  command               Command to run:
+    config              Validate the configuration and spit it out.
+    compile             Read the configuration and compile a program.
+    upload              Validate the configuration and upload the latest binary.
+    logs                Validate the configuration and show all logs.
+    run                 Validate the configuration, create a binary, upload it, and start logs.
+    clean-mqtt          Helper to clear retained messages from an MQTT topic.
+    wizard              A helpful setup wizard that will guide you through setting up ESPHome.
+    mqtt-fingerprint    Get the SSL fingerprint from a MQTT broker.
+    version             Print the ESPHome version and exit.
+    clean               Delete all temporary build files.
+    dashboard           Create a simple web server for a dashboard.
+    rename              Rename a device in YAML, compile the binary and upload it.
+
+options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Enable verbose ESPHome logs.
+  -q, --quiet           Disable all ESPHome logs.
+  -s key value, --substitution key value
+                        Add a substitution
+sis@u17:~/Letöltések$ cd ~/Dokumentumok/
+sis@u17:~/Dokumentumok$ ls
+'Eszközátvételi nyilvántartás.odt'   teszt_public_key.pem
+sis@u17:~/Dokumentumok$ 
+
